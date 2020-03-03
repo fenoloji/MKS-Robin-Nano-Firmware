@@ -90,7 +90,8 @@ static void cbLanguageWin(WM_MESSAGE * pMsg) {
 				{
 
 					gCfgItems.language = LANG_TURKISH;
-					bakup_cfg_inf(BAK_LANG_ID,(uint8_t *)&gCfgItems.language);
+					//bakup_cfg_inf(BAK_LANG_ID,        gCfgItems.language);
+					AT24CXX_Write(EPR_LANGUAGE,(uint8_t *)&gCfgItems.language,1);	
 					disp_language_init();
 					disp_sel_item();
 				}	
