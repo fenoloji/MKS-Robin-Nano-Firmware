@@ -20,7 +20,7 @@ static GUI_HWIN hLanguageWnd;
 //static BUTTON_STRUCT buttonSingCh, buttonCompCh, buttonEng, buttonRet;
 static BUTTON_STRUCT /*buttonUp,buttonNext,*/buttonRet;
 static BUTTON_STRUCT buttonSimple_Ch,buttontraditional_Ch,buttonEng,/*buttonJapan,buttonGerman,*/buttonFrench,buttonRussian;
-static BUTTON_STRUCT buttonTurkish,buttonSpanish,/*buttonPortuguese,buttonKorean,buttonItaly*/;
+static BUTTON_STRUCT buttonTurkish,buttonSpanish,buttonItaly;
 
 //static uint8_t page_nub = 1;
 
