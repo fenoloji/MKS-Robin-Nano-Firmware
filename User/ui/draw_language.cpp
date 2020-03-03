@@ -86,6 +86,14 @@ static void cbLanguageWin(WM_MESSAGE * pMsg) {
 					disp_language_init();
 					disp_sel_item();
 				}
+				else if(pMsg->hWinSrc == buttonTurkish.btnHandle)
+				{
+
+					gCfgItems.language = LANG_TURKISH;
+					bakup_cfg_inf(BAK_LANG_ID,(uint8_t *)&gCfgItems.language);
+					disp_language_init();
+					disp_sel_item();
+				}	
 #if 0
 				else if(pMsg->hWinSrc == buttonJapan.btnHandle)
 				{
@@ -111,14 +119,7 @@ static void cbLanguageWin(WM_MESSAGE * pMsg) {
 					disp_language_init();
 					disp_sel_item();
 				}	
-				else if(pMsg->hWinSrc == buttonTurkish.btnHandle)
-				{
-
-					gCfgItems.language = LANG_TURKISH;
-					bakup_cfg_inf(BAK_LANG_ID,	gCfgItems.language);
-					disp_language_init();
-					disp_sel_item();
-				}		
+					
 				else if(pMsg->hWinSrc == buttonKorean.btnHandle)
 				{
 
@@ -248,7 +249,7 @@ void draw_Language()
       GUI_DispStringAt(creat_title_text(), TITLE_XPOS, TITLE_YPOS);
     }
 
-	//GUI_DispStringAt("×¼±¸´òÓ¡->ÉèÖÃ->ÓïÑÔ", 0, 0);
+	//GUI_DispStringAt("å‡†å¤‡æ‰“å°->è®¾ç½®->è¯­è¨€", 0, 0);
 	//GUI_DispStringAt(creat_title_text(), TITLE_XPOS, TITLE_YPOS);
 	
 	hLanguageWnd = WM_CreateWindow(0, titleHeight, LCD_WIDTH, imgHeight, WM_CF_SHOW, cbLanguageWin, 0);
@@ -260,20 +261,22 @@ void draw_Language()
 	buttonSpanish.btnHandle = BUTTON_CreateEx(INTERVAL_V, BTN_Y_PIXEL+INTERVAL_H, BTN_X_PIXEL,BTN_Y_PIXEL, hLanguageWnd, BUTTON_CF_SHOW, 0, alloc_win_id());
 	
 	buttonFrench.btnHandle = BUTTON_CreateEx(BTN_X_PIXEL+INTERVAL_V*2, BTN_Y_PIXEL+INTERVAL_H, BTN_X_PIXEL, BTN_Y_PIXEL, hLanguageWnd, BUTTON_CF_SHOW, 0, alloc_win_id());	
-	buttonItaly.btnHandle = BUTTON_CreateEx(BTN_X_PIXEL*2+INTERVAL_V*3,BTN_Y_PIXEL+INTERVAL_H, BTN_X_PIXEL, BTN_Y_PIXEL, hLanguageWnd, BUTTON_CF_SHOW, 0, alloc_win_id());
+	//buttonItaly.btnHandle = BUTTON_CreateEx(BTN_X_PIXEL*2+INTERVAL_V*3,BTN_Y_PIXEL+INTERVAL_H, BTN_X_PIXEL, BTN_Y_PIXEL, hLanguageWnd, BUTTON_CF_SHOW, 0, alloc_win_id());
+        buttonTurkish.btnHandle = BUTTON_CreateEx(BTN_X_PIXEL*2+INTERVAL_V*3,BTN_Y_PIXEL+INTERVAL_H, BTN_X_PIXEL, BTN_Y_PIXEL, hLanguageWnd, BUTTON_CF_SHOW, 0, alloc_win_id());
 
 	
 	buttonRet.btnHandle = BUTTON_CreateEx(BTN_X_PIXEL*3+INTERVAL_V*4 , BTN_Y_PIXEL+INTERVAL_H, BTN_X_PIXEL, BTN_Y_PIXEL, hLanguageWnd, BUTTON_CF_SHOW, 0, alloc_win_id());
 
 	disp_sel_item();
-
+	
+	BUTTON_SetBitmapEx(buttonTurkish.btnHandle, 0, &bmp_struct,BMP_PIC_X, BMP_PIC_Y);
 	BUTTON_SetBitmapEx(buttonSimple_Ch.btnHandle, 0, &bmp_struct,BMP_PIC_X, BMP_PIC_Y);
 	BUTTON_SetBitmapEx(buttontraditional_Ch.btnHandle, 0, &bmp_struct,BMP_PIC_X, BMP_PIC_Y);
 	BUTTON_SetBitmapEx(buttonEng.btnHandle, 0, &bmp_struct,BMP_PIC_X, BMP_PIC_Y);
 	BUTTON_SetBitmapEx(buttonRussian.btnHandle, 0, &bmp_struct,BMP_PIC_X, BMP_PIC_Y);
 	BUTTON_SetBitmapEx(buttonSpanish.btnHandle, 0, &bmp_struct,BMP_PIC_X, BMP_PIC_Y);
 	BUTTON_SetBitmapEx(buttonFrench.btnHandle, 0, &bmp_struct,BMP_PIC_X, BMP_PIC_Y);
-	BUTTON_SetBitmapEx(buttonItaly.btnHandle, 0, &bmp_struct,BMP_PIC_X, BMP_PIC_Y);
+	//BUTTON_SetBitmapEx(buttonItaly.btnHandle, 0, &bmp_struct,BMP_PIC_X, BMP_PIC_Y);
 	BUTTON_SetBitmapEx(buttonRet.btnHandle, 0, &bmp_struct,BMP_PIC_X, BMP_PIC_Y);
 
 	
@@ -297,54 +300,68 @@ void disp_sel_item()
 		{		
 			switch(gCfgItems.language)
 			{
+			case LANG_TURKISH:
+			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_turkish_sel.bin",1);		
+			BUTTON_SetBmpFileName(buttonSimple_Ch.btnHandle, "bmp_simplified_cn.bin",1);
+			BUTTON_SetBmpFileName(buttontraditional_Ch.btnHandle, "bmp_traditional_cn.bin",1);
+			BUTTON_SetBmpFileName(buttonEng.btnHandle, "bmp_english.bin",1);
+			BUTTON_SetBmpFileName(buttonRussian.btnHandle, "bmp_russian.bin",1);
+			BUTTON_SetBmpFileName(buttonSpanish.btnHandle, "bmp_spanish.bin",1);
+			//BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
+			BUTTON_SetBmpFileName(buttonFrench.btnHandle, "bmp_french.bin",1);		
+					
 			case LANG_SIMPLE_CHINESE:
+			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_turkish.bin",1);
 			BUTTON_SetBmpFileName(buttonSimple_Ch.btnHandle, "bmp_simplified_cn_sel.bin",1);
 			BUTTON_SetBmpFileName(buttontraditional_Ch.btnHandle, "bmp_traditional_cn.bin",1);
 			BUTTON_SetBmpFileName(buttonEng.btnHandle, "bmp_english.bin",1);
 			BUTTON_SetBmpFileName(buttonRussian.btnHandle, "bmp_russian.bin",1);
 			BUTTON_SetBmpFileName(buttonSpanish.btnHandle, "bmp_spanish.bin",1);
 			BUTTON_SetBmpFileName(buttonFrench.btnHandle, "bmp_french.bin",1);	
-			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
+			//BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
 			break;
 			case LANG_COMPLEX_CHINESE:
-
+			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_turkish.bin",1);
 			BUTTON_SetBmpFileName(buttonSimple_Ch.btnHandle, "bmp_simplified_cn.bin",1);
 			BUTTON_SetBmpFileName(buttontraditional_Ch.btnHandle, "bmp_traditional_cn_sel.bin",1);
 			BUTTON_SetBmpFileName(buttonEng.btnHandle, "bmp_english.bin",1);
 			BUTTON_SetBmpFileName(buttonRussian.btnHandle, "bmp_russian.bin",1);
 			BUTTON_SetBmpFileName(buttonSpanish.btnHandle, "bmp_spanish.bin",1);
 			BUTTON_SetBmpFileName(buttonFrench.btnHandle, "bmp_french.bin",1);
-			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
+			//BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
 			break;
 			case LANG_ENGLISH:
+			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_turkish.bin",1);		
 			BUTTON_SetBmpFileName(buttonSimple_Ch.btnHandle, "bmp_simplified_cn.bin",1);
 			BUTTON_SetBmpFileName(buttontraditional_Ch.btnHandle, "bmp_traditional_cn.bin",1);
 			BUTTON_SetBmpFileName(buttonEng.btnHandle, "bmp_english_sel.bin",1);
 			BUTTON_SetBmpFileName(buttonRussian.btnHandle, "bmp_russian.bin",1);
 			BUTTON_SetBmpFileName(buttonSpanish.btnHandle, "bmp_spanish.bin",1);
-			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
+			//BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
 			BUTTON_SetBmpFileName(buttonFrench.btnHandle, "bmp_french.bin",1);
 			break;
 	
 			case LANG_RUSSIAN:
+			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_turkish.bin",1);	
 			BUTTON_SetBmpFileName(buttonSimple_Ch.btnHandle, "bmp_simplified_cn.bin",1);
 			BUTTON_SetBmpFileName(buttontraditional_Ch.btnHandle, "bmp_traditional_cn.bin",1);
 			BUTTON_SetBmpFileName(buttonEng.btnHandle, "bmp_english.bin",1);
 			BUTTON_SetBmpFileName(buttonRussian.btnHandle, "bmp_russian_sel.bin",1);
 			BUTTON_SetBmpFileName(buttonSpanish.btnHandle, "bmp_spanish.bin",1);	
 			BUTTON_SetBmpFileName(buttonFrench.btnHandle, "bmp_french.bin",1);	
-			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
+			//BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
 			break;
-			case LANG_SPANISH:			
+			case LANG_SPANISH:
+			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_turkish.bin",1);		
 			BUTTON_SetBmpFileName(buttonSimple_Ch.btnHandle, "bmp_simplified_cn.bin",1);
 			BUTTON_SetBmpFileName(buttontraditional_Ch.btnHandle, "bmp_traditional_cn.bin",1);
 			BUTTON_SetBmpFileName(buttonEng.btnHandle, "bmp_english.bin",1);
 			BUTTON_SetBmpFileName(buttonRussian.btnHandle, "bmp_russian.bin",1);
 			BUTTON_SetBmpFileName(buttonSpanish.btnHandle, "bmp_spanish_sel.bin",1);	
-			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
+			//BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
 			BUTTON_SetBmpFileName(buttonFrench.btnHandle, "bmp_french.bin",1);	
 			break;
-			
+			/*
 			case LANG_ITALY:			
 			BUTTON_SetBmpFileName(buttonSimple_Ch.btnHandle, "bmp_simplified_cn.bin",1);
 			BUTTON_SetBmpFileName(buttontraditional_Ch.btnHandle, "bmp_traditional_cn.bin",1);
@@ -353,23 +370,26 @@ void disp_sel_item()
 			BUTTON_SetBmpFileName(buttonSpanish.btnHandle, "bmp_spanish.bin",1);	
 			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy_sel.bin",1);
 			BUTTON_SetBmpFileName(buttonFrench.btnHandle, "bmp_french.bin",1);	
-			break;	
-			case LANG_FRENCH:				
+			break;
+			*/
+			case LANG_FRENCH:
+			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_turkish.bin",1);		
 			BUTTON_SetBmpFileName(buttonSimple_Ch.btnHandle, "bmp_simplified_cn.bin",1);
 			BUTTON_SetBmpFileName(buttontraditional_Ch.btnHandle, "bmp_traditional_cn.bin",1);
 			BUTTON_SetBmpFileName(buttonEng.btnHandle, "bmp_english.bin",1);
 			BUTTON_SetBmpFileName(buttonRussian.btnHandle, "bmp_russian.bin",1);
 			BUTTON_SetBmpFileName(buttonSpanish.btnHandle, "bmp_spanish.bin",1);	
-			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
+			//BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
 			BUTTON_SetBmpFileName(buttonFrench.btnHandle, "bmp_french_sel.bin",1);	
 			break;			
 			default:
+			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_turkish.bin",1);
 			BUTTON_SetBmpFileName(buttonSimple_Ch.btnHandle, "bmp_simplified_cn.bin",1);
 			BUTTON_SetBmpFileName(buttontraditional_Ch.btnHandle, "bmp_traditional_cn.bin",1);
 			BUTTON_SetBmpFileName(buttonEng.btnHandle, "bmp_english.bin",1);
 			BUTTON_SetBmpFileName(buttonRussian.btnHandle, "bmp_russian.bin",1);
 			BUTTON_SetBmpFileName(buttonSpanish.btnHandle, "bmp_spanish.bin",1);
-			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
+			//BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
 			BUTTON_SetBmpFileName(buttonFrench.btnHandle, "bmp_french.bin",1);	
 
 			break;
@@ -384,6 +404,7 @@ void disp_sel_item()
 				BUTTON_SetText(buttonRussian.btnHandle,language_menu.russian);	
 				BUTTON_SetText(buttonFrench.btnHandle,language_menu.french);	
 				BUTTON_SetText(buttonSpanish.btnHandle,language_menu.spanish);
+				BUTTON_SetText(buttonSpanish.btnHandle,language_menu.turkish);
 			}
 		}
 	#if 0
@@ -392,7 +413,7 @@ void disp_sel_item()
 		{
 			switch(gCfgItems.language)
 			{
-			//µÚ¶þÒ³ÓïÑÔÏÔÊ¾
+			//ç¬¬äºŒé¡µè¯­è¨€æ˜¾ç¤º
 			case LANG_GERMAN:
 			BUTTON_SetBmpFileName(buttonGerman, "bmp_german_sel.bin",0);
 			BUTTON_SetBmpFileName(buttonFrench, "bmp_french.bin",0);
