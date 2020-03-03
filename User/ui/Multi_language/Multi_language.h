@@ -2,6 +2,7 @@
 #define MULTI_LANGUAGE_H
 
 #include "main.h"
+#include "Language_tr.h"
 #include "Language_en.h"
 #include "Language_s_cn.h"
 #include "Language_t_cn.h"
