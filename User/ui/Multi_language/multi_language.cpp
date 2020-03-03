@@ -299,7 +299,7 @@ void disp_language_init()
 	language_menu.italy = LANGUAGE_IT;
 	language_menu.brazil = LANGUAGE_BR;
 	language_menu.french = LANGUAGE_FR;
-        language_menu.Turkish = LANGUAGE_TR;
+        language_menu.turkish = LANGUAGE_TR;
 	
 	about_menu.type_name= ABOUT_TYPE_TEXT;
 	about_menu.firmware_v= ABOUT_VERSION_TEXT;
