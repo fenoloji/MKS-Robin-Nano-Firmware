@@ -494,6 +494,7 @@ typedef struct language_menu
 	const char *chinese_s;
 	const char *chinese_t;
 	const char *english;
+	const char *turkish;
 	const char *russian;
 	const char *japan;
 	const char *italy;
