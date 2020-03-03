@@ -20,15 +20,15 @@ extern void disp_language_init();
 #endif
 
 //语言
-#define LANG_SIMPLE_CHINESE		1
-#define LANG_COMPLEX_CHINESE	2
-#define LANG_ENGLISH						3
-#define LANG_JAPAN							4
-#define LANG_GERMAN						5		
-#define LANG_FRENCH						6
-#define LANG_RUSSIAN						7
-#define LANG_KOREAN						8
-#define LANG_TURKISH						9
+#define LANG_TURKISH						1     ///////////////////////fenoloji
+#define LANG_SIMPLE_CHINESE		2
+#define LANG_COMPLEX_CHINESE	3
+#define LANG_ENGLISH						4
+#define LANG_JAPAN							5
+#define LANG_GERMAN						6		
+#define LANG_FRENCH						7
+#define LANG_RUSSIAN						8
+#define LANG_KOREAN						9
 #define LANG_SPANISH						10
 #define LANG_GREEK							11
 #define LANG_ITALY							12
@@ -715,6 +715,7 @@ extern TemperatureSettings_menu_def TemperatureSettings_menu;
 #define STEP_5PERCENT				"5%"
 #define STEP_10PERCENT				"10%"
 
+#define LANG_TURKISH				"Türkçe"  ////////////////////////fenoloji
 #define LANGUAGE_S_CN				"简体"
 #define LANGUAGE_T_CN				"繁体"
 #define LANGUAGE_EN					"English"
@@ -1192,7 +1193,186 @@ extern TemperatureSettings_menu_def TemperatureSettings_menu;
 #define DIALOG_CLOSE_MACHINE_GN             "Closing machine......"
 #define DIALOG_UNBIND_PRINTER_GN            "Unbind the printer?"
 
+//****************土耳其语  TÜRKÇE ***************************//
+#define TOOL_TEXT_TU		"Araçlar"
+#define PREHEAT_TEXT_TU          "Ön Isıtma"
+#define	MOVE_TEXT_TU		"Hareketler"
+#define HOME_TEXT_TU  		"Home"
+#define PRINT_TEXT_TU		"Print"
+#define EXTRUDE_TEXT_TU "Extrude"
+#define LEVELING_TEXT_TU "Leveling"
+#define AUTO_LEVELING_TEXT_TU "AutoLevel"
+#define SET_TEXT_TU		"Set"
+#define MORE_TEXT_TU     "More"
 
+#define ADD_TEXT_TU			"EKLE"
+#define DEC_TEXT_TU			"ÇIKAR"
+#define EXTRUDER_1_TEXT_TU		"Extruder1"
+#define EXTRUDER_2_TEXT_TU		"Extruder2"
+#define HEATBED_TEXT_TU			"Tabla Isıtması"
+#define TEXT_1C_TU						"1℃"
+#define TEXT_5C_TU						"5℃"
+#define TEXT_10C_TU					"10℃"
+#define CLOSE_TEXT_TU				"Kapat"
+
+#define BACK_TEXT_TU					"Önceki"
+
+#define TOOL_PREHEAT_TU            "Precalentar"
+#define TOOL_EXTRUDE_TU             "Extrusor"
+#define TOOL_MOVE_TU                "Mover"
+#define TOOL_HOME_TU                "Origen"
+#define TOOL_LEVELING_TU               "Leveling"
+#define TOOL_AUTO_LEVELING_TU         "Autolevel"
+#define TOOL_FILAMENT_TU                "Filamento"
+#define TOOL_MORE_TU                    "Más"
+
+#define AXIS_X_ADD_TEXT_TU				"X+"
+#define AXIS_X_DEC_TEXT_TU				"X-"
+#define AXIS_Y_ADD_TEXT_TU				"Y+"
+#define AXIS_Y_DEC_TEXT_TU				"Y-"
+#define AXIS_Z_ADD_TEXT_TU				"Z+"
+#define AXIS_Z_DEC_TEXT_TU				"Z-"
+#define TEXT_01MM_TU							"0.1mm"
+#define TEXT_1MM_TU							"1mm"
+#define TEXT_10MM_TU							"10mm"
+
+#define HOME_X_TEXT_TU						"X"
+#define HOME_Y_TEXT_TU						"Y"
+#define HOME_Z_TEXT_TU						"Z"
+#define HOME_ALL_TEXT_TU					"Home"
+
+#define PAGE_UP_TEXT_TU					"Page up"
+#define PAGE_DOWN_TEXT_TU				"Page down"
+
+#define EXTRUDER_IN_TEXT_TU		"IN"
+#define EXTRUDER_OUT_TEXT_TU		"OUT"
+#define EXTRUDE_1MM_TEXT_TU			"1mm"
+#define EXTRUDE_5MM_TEXT_TU			"5mm"
+#define EXTRUDE_10MM_TEXT_TU		"10mm"
+#define EXTRUDE_LOW_SPEED_TEXT_TU		"LOW"
+#define EXTRUDE_MEDIUM_SPEED_TEXT_TU	"Medium"
+#define EXTRUDE_HIGH_SPEED_TEXT_TU		"High"
+
+#define LEVELING_POINT1_TEXT_TU				"Point1"
+#define LEVELING_POINT2_TEXT_TU				"Point2"
+#define LEVELING_POINT3_TEXT_TU			        "Point3"
+#define LEVELING_POINT4_TEXT_TU				"Point4"
+#define LEVELING_POINT5_TEXT_TU				"Point5"
+
+#define FILESYS_TEXT_TU								"FileSys"
+#define WIFI_TEXT_TU									"WIFI"
+#define FAN_TEXT_TU										"Fan"
+#define ABOUT_TEXT_TU									"About"
+#define BREAK_POINT_TEXT_TU						"Continu"
+#define FILAMENT_TEXT_TU							"Filament"
+#define LANGUAGE_TEXT_TU							"Dil"
+#define MOTOR_OFF_TEXT_TU							"Moto-off"
+#define SHUTDOWN_TEXT_TU							"Shutdown"
+
+#define U_DISK_TEXT_TU								"USB"
+#define SD_CARD_TEXT_TU								"SD"
+#define WIFI_NAME_TEXT_TU							"WIFI: "
+#define WIFI_KEY_TEXT_TU							"KEY: "
+#define WIFI_IP_TEXT_TU								"IP: "
+#define WIFI_AP_TEXT_TU								"STATE: AP"
+#define WIFI_STA_TEXT_TU							"STATE: STA"
+#define WIFI_CONNECTED_TEXT_TU				"CONNECTED"
+#define WIFI_DISCONNECTED_TEXT_TU			"DISCONNECTED"
+#define WIFI_EXCEPTION_TEXT_TU				"EXCEPTION"
+#define CLOUD_TEXT_TU								"Cloud"
+#define CLOUD_BIND_TU								"Bind"
+#define CLOUD_UNBIND_TU							"Unbind"
+#define CLOUD_UNBINDING_TU					"Unbinding"
+#define CLOUD_DISCONNECTED_TU				            "Disconnected"
+#define CLOUD_UNBINDED_TU						"Unbinded"
+#define CLOUD_BINDED_TU							"Binded"
+#define CLOUD_DISABLE_TU						"Disable"
+
+#define FAN_ADD_TEXT_TU								"ADD"
+#define FAN_DEC_TEXT_TU								"DEC"
+#define FAN_OPEN_TEXT_TU							"100%"
+#define FAN_HALF_TEXT_TU							"50%"
+#define FAN_CLOSE_TEXT_TU							"Close"
+#define FAN_TIPS1_TEXT_TU								"FAN\n%d"
+#define FAN_TIPS2_TEXT_TU								"FAN\nClose"
+
+#define FILAMENT_IN_TEXT_TU						"In"
+#define FILAMENT_OUT_TEXT_TU					"Out"
+#define FILAMENT_EXT0_TEXT_TU					"E1"
+#define FILAMENT_EXT1_TEXT_TU					"E2"
+#define FILAMENT_HEAT_TEXT_TU					"Preheat"					
+#define FILAMENT_STOP_TEXT_TU					"Stop"
+#define FILAMENT_CHANGE_TEXT_TU				"Filament replace"
+#define FILAMENT_TIPS2_TEXT_TU				"T:%d℃/%d℃"
+#define FILAMENT_TIPS3_TEXT_TU				"loading..."
+#define FILAMENT_TIPS4_TEXT_TU				"unloading..."
+#define FILAMENT_TIPS5_TEXT_TU				"Temp is too low to go,please heat"
+#define FILAMENT_TIPS6_TEXT_TU				"Completed"
+
+#define PRE_HEAT_EXT_TEXT_TU						"E%d\n%d℃/%d℃"
+#define PRE_HEAT_BED_TEXT_TU						"Bed\n%d℃/%d℃"
+
+#define FILE_LOADING_TU				"Loading......"
+#define NO_FILE_AND_CHECK_TU					"Dosya bulunamadı!\nDosyanın varlığını kontrol edin!"
+#define NO_FILE_TU					"No files found!"
+
+
+
+#define EXTRUDER_TEMP_TEXT_TU				"T:%d℃"
+#define EXTRUDER_E_LENGTH1_TEXT_TU   "E%d:%dmm"
+#define EXTRUDER_E_LENGTH2_TEXT_TU   "E%d:%dcm"
+#define EXTRUDER_E_LENGTH3_TEXT_TU   "E%d:%dm"
+
+#define ABOUT_TYPE_TEXT_TU							"Type: "
+#define ABOUT_VERSION_TEXT_TU					"Firmware: "
+#define ABOUT_WIFI_TEXT_TU							"WiFi: "
+
+#define PRINTING_OPERATION_TU					"Operation"
+#define PRINTING_PAUSE_TU						"Pause"
+#define PRINTING_TEMP_TU								"Temp."
+#define PRINTING_CHANGESPEED_TU				"Speed"
+#define PRINTING_RESUME_TU						"Resume"
+#define PRINTING_STOP_TU								"Stop"
+#define PRINTING_MORE_TU								"More"
+#define PRINTING_EXTRUDER_TU					"Extruder"
+
+#define EXTRUDER_SPEED_TU							"Extrude"
+#define MOVE_SPEED_TU									"Move"
+#define EXTRUDER_SPEED_STATE_TU							"Extrude Speed\n%d%%"
+#define MOVE_SPEED_STATE_TU									"Move Speed\n%d%%"
+#define STEP_1PERCENT_TU										"1%"
+#define STEP_5PERCENT_TU										"5%"
+#define STEP_10PERCENT_TU										"10%"
+
+#define TILE_READYPRINT_TU							"ReadyPrint"
+#define TILE_CHOOSEFILE_TU							"ChooseFile"
+#define TILE_PRINTING_TU								"Printing"
+#define TILE_OPERATION_TU								"Operation"
+#define TILE_ADJUST_TU									"Adjust"
+#define	TILE_WIRELESS_TU								"Wireless"
+#define TITLE_CLOUD_TEXT_TU				        "Cloud"
+#define TITILE_DIALOG_CONFIRM_TU				"Confirm"
+
+#define AUTO_SHUTDOWN_TU								"Auto"
+#define MANUAL_SHUTDOWN_TU							"Manual"
+
+#define DIALOG_CONFIRM_TU							"Onaylayın"
+#define DIALOG_CANCLE_TU							"İptal"
+#define DIALOG_OK_TU									"TAMAM"
+#define DIALOG_RESET_TU								"Reset"
+#define DIALOG_RETRY_TU								"Retry"
+#define DIALOG_DISABLE_TU							"Disable"
+#define DIALOG_PRINT_MODEL_TU					"Model Yazdırılsın mı?"
+#define DIALOG_CANCEL_PRINT_TU				"Yazdırma Dursun mu?"
+#define DIALOG_RETRY_TU									"Tekrar Dene"
+#define DIALOG_STOP_TU									"Dur"
+#define DIALOG_REPRINT_FROM_BREAKPOINT_TU	"Reprint from breakpoint?"
+#define DIALOG_UNBIND_PRINTER_TU						"Unbind the printer?"
+#define DIALOG_ERROR_TIPS1_TU								"error:no file,please check it again."
+#define DIALOG_ERROR_TIPS2_TU								"error:transaction failed.please check display baudrate \nwhether as the same as mainboard!"
+#define DIALOG_ERROR_TIPS3_TU								"error:file name or path is too long!"
+#define DIALOG_CLOSE_MACHINE_TU             "Closing machine......"
+#define DIALOG_UNBIND_PRINTER_TU            "Unbind the printer?"
 
 
 #if 0
@@ -1375,186 +1555,7 @@ extern TemperatureSettings_menu_def TemperatureSettings_menu;
 #define DIALOG_ERROR_TIPS3_GR								"error:file name or path is too long!"
 #define DIALOG_CLOSE_MACHINE_GR             "Closing machine......"
 #define DIALOG_UNBIND_PRINTER_GR            "Unbind the printer?"
-//****************土耳其语***************************//
-#define TOOL_TEXT_TU		"Tool"
-#define PREHEAT_TEXT_TU "Preheat"
-#define	MOVE_TEXT_TU		"Move"
-#define HOME_TEXT_TU  "Home"
-#define PRINT_TEXT_TU		"Print"
-#define EXTRUDE_TEXT_TU "Extrude"
-#define LEVELING_TEXT_TU "Leveling"
-#define AUTO_LEVELING_TEXT_TU "AutoLevel"
-#define SET_TEXT_TU		"Set"
-#define MORE_TEXT_TU     "More"
 
-#define ADD_TEXT_TU			"ADD"
-#define DEC_TEXT_TU			"DEC"
-#define EXTRUDER_1_TEXT_TU		"Extruder1"
-#define EXTRUDER_2_TEXT_TU		"Extruder2"
-#define HEATBED_TEXT_TU			"HeatBed"
-#define TEXT_1C_TU						"1℃"
-#define TEXT_5C_TU						"5℃"
-#define TEXT_10C_TU					"10℃"
-#define CLOSE_TEXT_TU				"Close"
-
-#define BACK_TEXT_TU					"Back"
-
-#define TOOL_PREHEAT_TU            "Precalentar"
-#define TOOL_EXTRUDE_TU             "Extrusor"
-#define TOOL_MOVE_TU                "Mover"
-#define TOOL_HOME_TU                "Origen"
-#define TOOL_LEVELING_TU               "Leveling"
-#define TOOL_AUTO_LEVELING_TU         "Autolevel"
-#define TOOL_FILAMENT_TU                "Filamento"
-#define TOOL_MORE_TU                    "Más"
-
-#define AXIS_X_ADD_TEXT_TU				"X+"
-#define AXIS_X_DEC_TEXT_TU				"X-"
-#define AXIS_Y_ADD_TEXT_TU				"Y+"
-#define AXIS_Y_DEC_TEXT_TU				"Y-"
-#define AXIS_Z_ADD_TEXT_TU				"Z+"
-#define AXIS_Z_DEC_TEXT_TU				"Z-"
-#define TEXT_01MM_TU							"0.1mm"
-#define TEXT_1MM_TU							"1mm"
-#define TEXT_10MM_TU							"10mm"
-
-#define HOME_X_TEXT_TU						"X"
-#define HOME_Y_TEXT_TU						"Y"
-#define HOME_Z_TEXT_TU						"Z"
-#define HOME_ALL_TEXT_TU					"Home"
-
-#define PAGE_UP_TEXT_TU					"Page up"
-#define PAGE_DOWN_TEXT_TU				"Page down"
-
-#define EXTRUDER_IN_TEXT_TU		"IN"
-#define EXTRUDER_OUT_TEXT_TU		"OUT"
-#define EXTRUDE_1MM_TEXT_TU			"1mm"
-#define EXTRUDE_5MM_TEXT_TU			"5mm"
-#define EXTRUDE_10MM_TEXT_TU		"10mm"
-#define EXTRUDE_LOW_SPEED_TEXT_TU		"LOW"
-#define EXTRUDE_MEDIUM_SPEED_TEXT_TU	"Medium"
-#define EXTRUDE_HIGH_SPEED_TEXT_TU		"High"
-
-#define LEVELING_POINT1_TEXT_TU				"Point1"
-#define LEVELING_POINT2_TEXT_TU				"Point2"
-#define LEVELING_POINT3_TEXT_TU			"Point3"
-#define LEVELING_POINT4_TEXT_TU				"Point4"
-#define LEVELING_POINT5_TEXT_TU				"Point5"
-
-#define FILESYS_TEXT_TU								"FileSys"
-#define WIFI_TEXT_TU									"WIFI"
-#define FAN_TEXT_TU										"Fan"
-#define ABOUT_TEXT_TU									"About"
-#define BREAK_POINT_TEXT_TU						"Continu"
-#define FILAMENT_TEXT_TU							"Filament"
-#define LANGUAGE_TEXT_TU							"Language"
-#define MOTOR_OFF_TEXT_TU							"Moto-off"
-#define SHUTDOWN_TEXT_TU							"Shutdown"
-
-#define U_DISK_TEXT_TU								"USB"
-#define SD_CARD_TEXT_TU								"SD"
-#define WIFI_NAME_TEXT_TU							"WIFI: "
-#define WIFI_KEY_TEXT_TU							"KEY: "
-#define WIFI_IP_TEXT_TU								"IP: "
-#define WIFI_AP_TEXT_TU								"STATE: AP"
-#define WIFI_STA_TEXT_TU							"STATE: STA"
-#define WIFI_CONNECTED_TEXT_TU				"CONNECTED"
-#define WIFI_DISCONNECTED_TEXT_TU			"DISCONNECTED"
-#define WIFI_EXCEPTION_TEXT_TU				"EXCEPTION"
-#define CLOUD_TEXT_TU								"Cloud"
-#define CLOUD_BIND_TU								"Bind"
-#define CLOUD_UNBIND_TU							"Unbind"
-#define CLOUD_UNBINDING_TU					"Unbinding"
-#define CLOUD_DISCONNECTED_TU				"Disconnected"
-#define CLOUD_UNBINDED_TU						"Unbinded"
-#define CLOUD_BINDED_TU							"Binded"
-#define CLOUD_DISABLE_TU						"Disable"
-
-#define FAN_ADD_TEXT_TU								"ADD"
-#define FAN_DEC_TEXT_TU								"DEC"
-#define FAN_OPEN_TEXT_TU							"100%"
-#define FAN_HALF_TEXT_TU							"50%"
-#define FAN_CLOSE_TEXT_TU							"Close"
-#define FAN_TIPS1_TEXT_TU								"FAN\n%d"
-#define FAN_TIPS2_TEXT_TU								"FAN\nClose"
-
-#define FILAMENT_IN_TEXT_TU						"In"
-#define FILAMENT_OUT_TEXT_TU					"Out"
-#define FILAMENT_EXT0_TEXT_TU					"E1"
-#define FILAMENT_EXT1_TEXT_TU					"E2"
-#define FILAMENT_HEAT_TEXT_TU					"Preheat"					
-#define FILAMENT_STOP_TEXT_TU					"Stop"
-#define FILAMENT_CHANGE_TEXT_TU				"Filament replace"
-#define FILAMENT_TIPS2_TEXT_TU				"T:%d℃/%d℃"
-#define FILAMENT_TIPS3_TEXT_TU				"loading..."
-#define FILAMENT_TIPS4_TEXT_TU				"unloading..."
-#define FILAMENT_TIPS5_TEXT_TU				"Temp is too low to go,please heat"
-#define FILAMENT_TIPS6_TEXT_TU				"Completed"
-
-#define PRE_HEAT_EXT_TEXT_TU						"E%d\n%d℃/%d℃"
-#define PRE_HEAT_BED_TEXT_TU						"Bed\n%d℃/%d℃"
-
-#define FILE_LOADING_TU				"Loading......"
-#define NO_FILE_AND_CHECK_TU					"No files found!\nCheck the file system configuration!"
-#define NO_FILE_TU					"No files found!"
-
-
-
-#define EXTRUDER_TEMP_TEXT_TU				"T:%d℃"
-#define EXTRUDER_E_LENGTH1_TEXT_TU   "E%d:%dmm"
-#define EXTRUDER_E_LENGTH2_TEXT_TU   "E%d:%dcm"
-#define EXTRUDER_E_LENGTH3_TEXT_TU   "E%d:%dm"
-
-#define ABOUT_TYPE_TEXT_TU							"Type: "
-#define ABOUT_VERSION_TEXT_TU					"Firmware: "
-#define ABOUT_WIFI_TEXT_TU							"WiFi: "
-
-#define PRINTING_OPERATION_TU					"Operation"
-#define PRINTING_PAUSE_TU						"Pause"
-#define PRINTING_TEMP_TU								"Temp."
-#define PRINTING_CHANGESPEED_TU				"Speed"
-#define PRINTING_RESUME_TU						"Resume"
-#define PRINTING_STOP_TU								"Stop"
-#define PRINTING_MORE_TU								"More"
-#define PRINTING_EXTRUDER_TU					"Extruder"
-
-#define EXTRUDER_SPEED_TU							"Extrude"
-#define MOVE_SPEED_TU									"Move"
-#define EXTRUDER_SPEED_STATE_TU							"Extrude Speed\n%d%%"
-#define MOVE_SPEED_STATE_TU									"Move Speed\n%d%%"
-#define STEP_1PERCENT_TU										"1%"
-#define STEP_5PERCENT_TU										"5%"
-#define STEP_10PERCENT_TU										"10%"
-
-#define TILE_READYPRINT_TU							"ReadyPrint"
-#define TILE_CHOOSEFILE_TU							"ChooseFile"
-#define TILE_PRINTING_TU								"Printing"
-#define TILE_OPERATION_TU								"Operation"
-#define TILE_ADJUST_TU									"Adjust"
-#define	TILE_WIRELESS_TU								"Wireless"
-#define TITLE_CLOUD_TEXT_TU				        "Cloud"
-#define TITILE_DIALOG_CONFIRM_TU				"Confirm"
-
-#define AUTO_SHUTDOWN_TU								"Auto"
-#define MANUAL_SHUTDOWN_TU							"Manual"
-
-#define DIALOG_CONFIRM_TU							"Confirm"
-#define DIALOG_CANCLE_TU							"Cancel"
-#define DIALOG_OK_TU									"OK"
-#define DIALOG_RESET_TU								"Reset"
-#define DIALOG_RETRY_TU								"Retry"
-#define DIALOG_DISABLE_TU							"Disable"
-#define DIALOG_PRINT_MODEL_TU					"Print model?"
-#define DIALOG_CANCEL_PRINT_TU				"Stop print?"
-#define DIALOG_RETRY_TU									"Retry"
-#define DIALOG_STOP_TU									"Stop"
-#define DIALOG_REPRINT_FROM_BREAKPOINT_TU	"Reprint from breakpoint?"
-#define DIALOG_UNBIND_PRINTER_TU						"Unbind the printer?"
-#define DIALOG_ERROR_TIPS1_TU								"error:no file,please check it again."
-#define DIALOG_ERROR_TIPS2_TU								"error:transaction failed.please check display baudrate \nwhether as the same as mainboard!"
-#define DIALOG_ERROR_TIPS3_TU								"error:file name or path is too long!"
-#define DIALOG_CLOSE_MACHINE_TU             "Closing machine......"
-#define DIALOG_UNBIND_PRINTER_TU            "Unbind the printer?"
 //****************韩语***************************//
 #define TOOL_TEXT_KR		"Tool"
 #define PREHEAT_TEXT_KR "Preheat"
