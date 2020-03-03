@@ -107,11 +107,11 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-        //�ж���������
+        //中断向量设置
         //SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH */
         //SCB->VTOR = 0x08000000 | (0x7000 & (uint32_t)0x1FFFFF80);  /* Vector Table Relocation in Internal FLASH */
-                                                                //��bootloaderʱ������Ϊ0x5000, Options ->Linker ->Edit...-> 0x08005000
-                                                                 //��bootloaderʱ������Ϊ0x0000, Options ->Linker ->Edit...-> 0x08000000 
+                                                                //有bootloader时，设置为0x5000, Options ->Linker ->Edit...-> 0x08005000
+                                                                 //无bootloader时，设置为0x0000, Options ->Linker ->Edit...-> 0x08000000 
 
   /* USER CODE END 1 */
 
@@ -120,8 +120,8 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-  //��bootloaderʱ������Ϊ0x7000, Options ->Linker ->Edit...-> Vector Table ->0x08007000
-  //����ע����ǣ���BootLoader��ת������ʱ��ROM��Ҫ����Ϊ 0x8007000, Options ->Linker ->Edit...-> Memony Regions ->Rom ->0x08007000
+  //有bootloader时，设置为0x7000, Options ->Linker ->Edit...-> Vector Table ->0x08007000
+  //另外注意的是：当BootLoader跳转不正常时，ROM需要设置为 0x8007000, Options ->Linker ->Edit...-> Memony Regions ->Rom ->0x08007000
   NVIC_SetVectorTable(NVIC_VectTab_FLASH, (uint32_t)0x7000);
                                                             
   /* Configure the system clock */
@@ -160,7 +160,7 @@ int main(void)
 #endif
   //MX_DAC_Init();
   //MX_SPI1_Init();
-  //MX_IWDG_Init();     //ι��
+  //MX_IWDG_Init();     //喂狗
   /* Initialize interrupts */
   MX_NVIC_Init();
 
@@ -176,7 +176,7 @@ int main(void)
 	WIFISERIAL.begin(115200);   
 #endif
 
-  //ʹ��SPI����
+  //使能SPI外设
   SPI_Cmd(SPI2, ENABLE); 
   //GUI_Init();
   //Lcd_Light_ON;
@@ -192,7 +192,7 @@ int main(void)
  //mksSdCardTest();
  //mksUSBTest();
     /*---------test end-------------*/
-	//����PWM
+	//启动PWM
 #if defined(MKS_ROBINPRO) || defined(MKS_ROBIN_NANO)
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 #elif defined(MKS_ROBIN) || defined(MKS_ROBIN2) 
@@ -213,16 +213,16 @@ int main(void)
 
     MKS_FAN_TIM = 0;
 
-    //����TIMER
+    //启动TIMER
     HAL_TIM_Base_Start_IT(&htim2);
     HAL_TIM_Base_Start_IT(&htim4);
-    //����ADC DMA
-    HAL_NVIC_DisableIRQ(DMA1_Channel1_IRQn);//�ر�DMA1_Channel1_IRQHandler�ж�
+    //启动ADC DMA
+    HAL_NVIC_DisableIRQ(DMA1_Channel1_IRQn);//关闭DMA1_Channel1_IRQHandler中断
     if(HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&uhADCxConvertedValue,3)!=HAL_OK)    
       Error_Handler();
-    HAL_NVIC_DisableIRQ(DMA1_Channel1_IRQn);//�ر�DMA1_Channel1_IRQn�ж�
+    HAL_NVIC_DisableIRQ(DMA1_Channel1_IRQn);//关闭DMA1_Channel1_IRQn中断
  
-    //����PWM
+    //启动PWM
     /*
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
     TIM1->CCR1 = 0;
@@ -259,7 +259,7 @@ int main(void)
 
   setTouchBound(gCfgItems.touch_adj_xMin, gCfgItems.touch_adj_xMax, gCfgItems.touch_adj_yMax, gCfgItems.touch_adj_yMin);
 
-  //ˢдͼƬ����
+  //刷写图片总数
   SPI_FLASH_BufferRead((u8*)&gCfgItems.total_pic,PIC_COUNTER_ADDR,1);
   #if 0//tan_mask
   else
@@ -271,24 +271,27 @@ int main(void)
   switch(gCfgItems.language_bak)
   {
   	case 1:
+		gCfgItems.language_bak= LANG_TURKISH;
+		break;  
+	case 2:	  
 		gCfgItems.language_bak= LANG_SIMPLE_CHINESE;
 		break;
-	case 2:
+	case 3:
 		gCfgItems.language_bak= LANG_COMPLEX_CHINESE;
 		break;
-	case 3:
+	case 4:
 		gCfgItems.language_bak= LANG_ENGLISH;
 		break;
-	case 4:
+	case 5:
 		gCfgItems.language_bak= LANG_RUSSIAN;
 		break;
-	case 5:
+	case 6:
 		gCfgItems.language_bak= LANG_SPANISH;
 		break;
-	case 6:
+	case 7:
 		gCfgItems.language_bak= LANG_FRENCH;
 		break;
-	case 7:
+	case 8:
 		gCfgItems.language_bak= LANG_ITALY;
 		break;
   }
@@ -339,7 +342,7 @@ int main(void)
   /*
   if(DeviceCode==0x9488)
   {
-	TFT_screen.display_style = gCfgItems.display_style;// 1:��Լ�棻0:����棻
+	TFT_screen.display_style = gCfgItems.display_style;// 1:简约版；0:经典版；
 	TFT_screen.firstpage_gap = 32;
 	TFT_screen.gap_h = 2;
 	TFT_screen.gap_v = 2;
@@ -353,7 +356,7 @@ int main(void)
   }
   else //if(DeviceCode==0x1505)
   {
-	TFT_screen.display_style = 0;//gCfgItems.display_style;// 1:��Լ�棻0:����棻
+	TFT_screen.display_style = 0;//gCfgItems.display_style;// 1:简约版；0:经典版；
 	TFT_screen.firstpage_gap = 32;
 	TFT_screen.gap_h = 2;
 	TFT_screen.gap_v = 2;
@@ -382,7 +385,7 @@ int main(void)
     
       //mksTmp.cfg_hardware_test_enable = 1;  //for test
     
-      if(mksTmp.cfg_hardware_test_enable)   //����Ӳ������
+      if(mksTmp.cfg_hardware_test_enable)   //生产硬件测试
       {
        /*
         GUI_SetBkColor(gCfgItems.background_color);
@@ -390,7 +393,7 @@ int main(void)
         GUI_Clear();
         GUI_UC_SetEncodeNone();
         GUI_SetFont(&GUI_FontHZ16);
-        GUI_DispStringAt("Ӳ������-(�����ڲ��汾V1.0.0_000)", 20, 0);
+        GUI_DispStringAt("硬件测试-(软件内部版本V1.0.0_000)", 20, 0);
         mksHardwareTest();
         */
         mksCfg.extruders=2;
@@ -415,7 +418,7 @@ int main(void)
   {
   	mks_rePrintCheck();
   }
-  else//û�жϵ�����
+  else//没有断电续打
   {
 	  while(1)
 	  {
@@ -503,10 +506,10 @@ void mksBeeperAlarm(void)
 #if 0
 		if((gCfgItems.filament_det1_level_flg==1)||(gCfgItems.filament_det2_level_flg==1))
 		{
-			//���ڸߵ�ƽ����ʱ��
-			//�Ƚ���ͨ���ܽŵ�ƽ���ж�
-			//�źŽŵĵ�ƽʹ������ֹͣ���죬
-			//����Ĭ��ÿ�ζ�������5�Ρ�
+			//由于高电平触发时，
+			//比较难通过管脚电平来判断
+			//信号脚的电平使其立即停止鸣响，
+			//所以默认每次断料鸣响5次。
 			beeper_cnt = 10;
 		}
 		else
@@ -614,27 +617,27 @@ void Close_machine_display()
 	MKS_PW_OFF_OP = 0;
 }
 
-//�ϵ���ϼ��
-//�ϵ�:PB0�ϵ��⣬������Ϊ�ڶ���ͷ�Ķ��ϼ��ӿڡ�
-//����:PB1���ϼ�⣬
-//�ػ�ģ����ܽ�:
-//PB4������ͨ�������ļ���ѡ���220DETģ����PWCģ��;
-//Ĭ�Ͻ�PWCģ�顣
+//断电断料检测
+//断电:PB0断电检测，可以作为第二喷头的断料检测接口。
+//断料:PB1断料检测，
+//关机模块检测管脚:
+//PB4，可以通过配置文件来选择接220DET模块或接PWC模块;
+//默认接PWC模块。
 void PowerOff_Filament_Check()
 {
 	volatile uint8_t i;
 
-	//�ϵ���
-	if(gCfgItems.insert_det_module == 1)//��220detģ�飬�ϵ���
+	//断电检测
+	if(gCfgItems.insert_det_module == 1)//接220det模块，断电检测
 	{
-		if((mksReprint.mks_printer_state == MKS_WORKING)&&(gCfgItems.mask_det_Function!=1))//��ӡ���������ͣ����
+		if((mksReprint.mks_printer_state == MKS_WORKING)&&(gCfgItems.mask_det_Function!=1))//打印中则进入暂停界面
 		{
 			if(MKS_PW_DET_OP== 0)
 			{
 				poweroff_det_flg = 1;
 				if(poweroff_det_cnt >= 1000)
 				{
-					if((MKS_PW_DET_OP==0)&&(gCfgItems.have_ups==1))//��UPS������ͣ
+					if((MKS_PW_DET_OP==0)&&(gCfgItems.have_ups==1))//有UPS则先暂停
 					{
 						poweroff_det_flg = 0;
 						poweroff_det_cnt= 0;
@@ -660,7 +663,7 @@ void PowerOff_Filament_Check()
 
 						return;				
 					}
-					//��UPSֱ�ӹػ�
+					//无UPS直接关机
 					poweroff_det_flg = 0;
 					poweroff_det_cnt= 0;
 
@@ -676,14 +679,14 @@ void PowerOff_Filament_Check()
 			}
 		}		
 	}
-	else//��PWC�ػ�ģ��
+	else//接PWC关机模块
 	{
 		if(MKS_PW_DET_OP == 0)//
 		{
-			poweroff_det_low_flg = 1;//������ʱ
+			poweroff_det_low_flg = 1;//启动计时
 		}
 		
-		if(poweroff_det_low_cnt >= 80)// 1s����Ϊ�ߵ�ƽ
+		if(poweroff_det_low_cnt >= 80)// 1s跳变为高电平
 		{
 			if(MKS_PW_DET_OP == 1)
 			{
@@ -705,7 +708,7 @@ void PowerOff_Filament_Check()
 			{
 				if(MKS_PW_DET_OP == 1)
 				{
-					if((mksReprint.mks_printer_state == MKS_WORKING)&&(gCfgItems.have_ups==1))//��ӡ������UPS�󱸵�Դ���������ͣ����
+					if((mksReprint.mks_printer_state == MKS_WORKING)&&(gCfgItems.have_ups==1))//打印中且有UPS后备电源，则进入暂停界面
 					{
 						poweroff_det_high_flg = 0;
 						poweroff_det_high_cnt = 0;
@@ -732,7 +735,7 @@ void PowerOff_Filament_Check()
 
 						return;
 					}
-					//ûUPS��Դ��û�ڴ�ӡ��ֱ�ӹػ���
+					//没UPS电源或没在打印，直接关机。
 					poweroff_det_high_flg = 0;
 					poweroff_det_high_cnt = 0;
 					poweroff_det_flg=0;
@@ -750,15 +753,15 @@ void PowerOff_Filament_Check()
 			}
 		}
 	}
-	//���ϼ��2
-	if((mksCfg.extruders == 2)&&(mksReprint.mks_printer_state == MKS_WORKING)&&(gCfgItems.mask_det_Function!=1))//��ӡ���������ͣ����
+	//断料检测2
+	if((mksCfg.extruders == 2)&&(mksReprint.mks_printer_state == MKS_WORKING)&&(gCfgItems.mask_det_Function!=1))//打印中则进入暂停界面
 	{
-		if(gCfgItems.filament_det1_level_flg == 1)//���Ͻӿڽ����ƽΪ�ߵ�ƽ����ʱ�Ĵ���
+		if(gCfgItems.filament_det1_level_flg == 1)//断料接口接入电平为高电平触发时的处理
 		{
-			//�ߵ�ƽ����ʱ���Ǽ��2s�͵�ƽ��2s�ߵ�ƽ
+			//高电平触发时，是检测2s低电平和2s高电平
       		if(MKS_MT_DET2_OP == 0)
 			{
-				filament_det2_low_flg = 1;//������ʱ
+				filament_det2_low_flg = 1;//启动计时
 			}
 			
 			if(filament_det2_low_cnt >= 2000)// 2s
@@ -822,7 +825,7 @@ void PowerOff_Filament_Check()
 				}
 			}
 		}
-		else//���Ͻӿڽ����ƽΪ�͵�ƽ����ʱ����
+		else//断料接口接入电平为低电平触发时处理
 		{
 			if(MKS_MT_DET2_OP == 0)
 			{
@@ -866,15 +869,15 @@ void PowerOff_Filament_Check()
 			}
 		}
 	}	
-	//���ϼ��1
-	if((mksReprint.mks_printer_state == MKS_WORKING)&&(gCfgItems.mask_det_Function!=1))//��ӡ���������ͣ����
+	//断料检测1
+	if((mksReprint.mks_printer_state == MKS_WORKING)&&(gCfgItems.mask_det_Function!=1))//打印中则进入暂停界面
 	{
-		if(gCfgItems.filament_det0_level_flg == 1)//���Ͻӿڽ����ƽΪ�ߵ�ƽ����ʱ�Ĵ���
+		if(gCfgItems.filament_det0_level_flg == 1)//断料接口接入电平为高电平触发时的处理
 		{
-			//�ߵ�ƽ����ʱ���Ǽ��2s�͵�ƽ��2s�ߵ�ƽ
+			//高电平触发时，是检测2s低电平和2s高电平
       		if(MKS_MT_DET1_OP == 0)
 			{
-				filament_det1_low_flg = 1;//������ʱ
+				filament_det1_low_flg = 1;//启动计时
 			}
 			
 			if(filament_det1_low_cnt >= 2000)// 2s
@@ -938,7 +941,7 @@ void PowerOff_Filament_Check()
 				}
 			}
 		}
-		else//���Ͻӿڽ����ƽΪ�͵�ƽ����ʱ����
+		else//断料接口接入电平为低电平触发时处理
 		{
 			if(MKS_MT_DET1_OP == 0)
 			{
