@@ -25,14 +25,14 @@ extern void disp_language_init();
 #define LANG_SIMPLE_CHINESE		2
 #define LANG_COMPLEX_CHINESE	3
 #define LANG_ENGLISH						4
-#define LANG_JAPAN							5
-#define LANG_GERMAN						6		
+#define  LANG_RUSSIAN  							5
+#define   LANG_SPANISH   						6		
 #define LANG_FRENCH						7
-#define LANG_RUSSIAN						8
+#define	LANG_ITALY   				8
 #define LANG_KOREAN						9
-#define LANG_SPANISH						10
+#define LANG_GERMAN						10
 #define LANG_GREEK							11
-#define LANG_ITALY							12
+#define LANG_JAPAN								12
 #define LANG_PORTUGUESE				13
 
 
