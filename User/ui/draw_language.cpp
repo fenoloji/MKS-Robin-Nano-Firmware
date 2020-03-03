@@ -309,7 +309,7 @@ void disp_sel_item()
 			BUTTON_SetBmpFileName(buttonSpanish.btnHandle, "bmp_spanish.bin",1);
 			//BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_italy.bin",1);
 			BUTTON_SetBmpFileName(buttonFrench.btnHandle, "bmp_french.bin",1);		
-					
+			break;		
 			case LANG_SIMPLE_CHINESE:
 			BUTTON_SetBmpFileName(buttonItaly.btnHandle, "bmp_turkish.bin",1);
 			BUTTON_SetBmpFileName(buttonSimple_Ch.btnHandle, "bmp_simplified_cn_sel.bin",1);
