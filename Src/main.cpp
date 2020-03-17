@@ -295,9 +295,7 @@ int main(void)
 	case 8:
 		gCfgItems.language_bak= LANG_TURKISH;
 		break;  
-        case 9:
-		gCfgItems.language_bak= LANG_TURKISH;
-		break;  
+
   }
   
   if(gCfgItems.multiple_language == 0)
