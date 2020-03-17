@@ -270,30 +270,31 @@ int main(void)
 
   switch(gCfgItems.language_bak)
   {
-  	case 1:
-		gCfgItems.language_bak= LANG_TURKISH;
-		break;  
-	case 2:	  
+ 
+	case 1:	  
 		gCfgItems.language_bak= LANG_SIMPLE_CHINESE;
 		break;
-	case 3:
+	case 2:
 		gCfgItems.language_bak= LANG_COMPLEX_CHINESE;
 		break;
-	case 4:
+	case 3:
 		gCfgItems.language_bak= LANG_ENGLISH;
 		break;
-	case 5:
+	case 4:
 		gCfgItems.language_bak= LANG_RUSSIAN;
 		break;
-	case 6:
+	case 5:
 		gCfgItems.language_bak= LANG_SPANISH;
 		break;
-	case 7:
+	case 6:
 		gCfgItems.language_bak= LANG_FRENCH;
 		break;
-	case 8:
+	case 7:
 		gCfgItems.language_bak= LANG_ITALY;
 		break;
+	case 8:
+		gCfgItems.language_bak= LANG_TURKISH;
+		break;  
   }
   
   if(gCfgItems.multiple_language == 0)
